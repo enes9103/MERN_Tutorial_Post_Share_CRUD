@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useToken from "./hooks/useToken";
 import Navbar from "./components/Navbar";
+import Modal from "./components/Modal";
 
 function App() {
   const [token] = useToken();
