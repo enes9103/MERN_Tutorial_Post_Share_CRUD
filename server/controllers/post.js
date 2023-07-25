@@ -44,4 +44,4 @@ const deletePost = async (req, res) => {
   }
 };
 
-model.exports = { getPosts, createPost, updatePost, deletePost };
+module.exports = { getPosts, createPost, updatePost, deletePost };

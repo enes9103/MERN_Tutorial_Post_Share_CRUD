@@ -45,15 +45,15 @@ const Modal = ({ showModal, setShowModal }) => {
 
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                  <div class="mb-4">
+                  <div className="mb-4">
                     <label
-                      class="block text-gray-700 text-sm font-bold mb-2"
-                      for="username"
+                      className="block text-gray-700 text-sm font-bold mb-2"
+                      htmlFor="username"
                     >
                       Username
                     </label>
                     <input
-                      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       id="username"
                       value={postData.user}
                       name="user"
@@ -62,15 +62,15 @@ const Modal = ({ showModal, setShowModal }) => {
                       placeholder="Username"
                     />
                   </div>
-                  <div class="mb-4">
+                  <div className="mb-4">
                     <label
-                      class="block text-gray-700 text-sm font-bold mb-2"
-                      for="title"
+                      className="block text-gray-700 text-sm font-bold mb-2"
+                      htmlFor="title"
                     >
                       Title
                     </label>
                     <input
-                      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       id="title"
                       value={postData.title}
                       name="title"
@@ -79,15 +79,15 @@ const Modal = ({ showModal, setShowModal }) => {
                       placeholder="Title"
                     />
                   </div>
-                  <div class="mb-4">
+                  <div className="mb-4">
                     <label
-                      class="block text-gray-700 text-sm font-bold mb-2"
-                      for="description"
+                      className="block text-gray-700 text-sm font-bold mb-2"
+                      htmlFor="description"
                     >
                       Description
                     </label>
                     <textarea
-                      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       id="description"
                       value={postData.description}
                       name="description"

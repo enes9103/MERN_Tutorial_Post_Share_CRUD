@@ -45,7 +45,7 @@ const Auth = () => {
             {signUp && (
               <div className="mb-2">
                 <label
-                  for="userName"
+                  htmlFor="userName"
                   className="block text-sm font-semibold text-gray-800"
                 >
                   User Name
@@ -61,7 +61,7 @@ const Auth = () => {
             )}
             <div className="mb-2">
               <label
-                for="email"
+                htmlFor="email"
                 className="block text-sm font-semibold text-gray-800"
               >
                 Email
@@ -76,7 +76,7 @@ const Auth = () => {
             </div>
             <div className="mb-2">
               <label
-                for="password"
+                htmlFor="password"
                 className="block text-sm font-semibold text-gray-800"
               >
                 Password
