@@ -1,7 +1,27 @@
-import React from "react";
-import {TbMailShare} from 'react-icons/tb'
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { TbMailShare } from "react-icons/tb";
+import { createPostAction } from "../redux/actions/post";
 
 const Modal = ({ showModal, setShowModal }) => {
+  const dispatch = useDispatch();
+
+  const [postData, setPostData] = useState({
+    user: "",
+    title: "",
+    description: "",
+  });
+
+  const onChangeFunc = (e) => {
+    setPostData({ ...postData, [e.target.name]: e.target.value });
+  };
+
+  console.log(postData)
+  const postCreate = () => {
+    dispatch(createPostAction(postData));
+    setShowModal(false);
+  };
+
   return (
     <>
       {showModal ? (
@@ -12,7 +32,9 @@ const Modal = ({ showModal, setShowModal }) => {
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
                 <div className="flex items-start justify-between p-4 border-b border-solid border-slate-200 rounded-t">
-                  <h3 className="text-2xl font-semibold opacity-80 flex items-center gap-3"><span>Share Post</span> <TbMailShare/></h3>
+                  <h3 className="text-2xl font-semibold opacity-80 flex items-center gap-3">
+                    <span>Share Post</span> <TbMailShare />
+                  </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-60 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}
@@ -33,6 +55,9 @@ const Modal = ({ showModal, setShowModal }) => {
                     <input
                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       id="username"
+                      value={postData.user}
+                      name="user"
+                      onChange={onChangeFunc}
                       type="text"
                       placeholder="Username"
                     />
@@ -40,29 +65,35 @@ const Modal = ({ showModal, setShowModal }) => {
                   <div class="mb-4">
                     <label
                       class="block text-gray-700 text-sm font-bold mb-2"
-                      for="username"
+                      for="title"
                     >
                       Title
                     </label>
                     <input
                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      id="username"
+                      id="title"
+                      value={postData.title}
+                      name="title"
+                      onChange={onChangeFunc}
                       type="text"
-                      placeholder="Username"
+                      placeholder="Title"
                     />
                   </div>
                   <div class="mb-4">
                     <label
                       class="block text-gray-700 text-sm font-bold mb-2"
-                      for="username"
+                      for="description"
                     >
                       Description
                     </label>
                     <textarea
                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      id="username"
+                      id="description"
+                      value={postData.description}
+                      name="description"
+                      onChange={onChangeFunc}
                       type="text"
-                      placeholder="Username"
+                      placeholder="Description"
                     />
                   </div>
                 </div>
@@ -79,7 +110,7 @@ const Modal = ({ showModal, setShowModal }) => {
                   <button
                     className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
-                    onClick={() => setShowModal(false)}
+                    onClick={postCreate}
                   >
                     Share Post
                   </button>
