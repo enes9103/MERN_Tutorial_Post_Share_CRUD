@@ -7,7 +7,7 @@ const register = async (req, res) => {
   try {
     const { username, password, email } = req.body;
 
-    const user = await AuthSchema.findOne(email);
+    const user = await AuthSchema.findOne({ email: email });
 
     if (user) {
       return res.status(500).json({ msg: "Böyle bir kullanıcı zaten var!!" });
@@ -52,7 +52,7 @@ const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const user = await AuthSchema.findOne(email);
+    const user = await AuthSchema.findOne({ email: email });
 
     if (!user) {
       return res.status(500).json({ msg: "Böyle bir kullanıcı bulunamadı!!" });

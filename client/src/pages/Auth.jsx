@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Logo from "../assets/images/Beige Simple One Line Butterfly Events Logo.png";
+import { loginAction, registerAction } from "../redux/actions/auth";
+import {useDispatch} from 'react-redux'
 
 const Auth = () => {
   const [signUp, setSignUp] = useState(true);
@@ -9,13 +11,23 @@ const Auth = () => {
     password: "",
   });
 
+  const dispatch = useDispatch();
+
   const handleChangeForm = (e) => {
     setAuthData({
       ...authData,
       [e.target.name]: e.target.value,
     });
   };
-  console.log(authData);
+
+  const authFunc = ()=>{
+    if (signUp) {
+      console.log(authData)
+      dispatch(registerAction(authData))
+    } else {
+      dispatch(loginAction(authData))
+    }
+  }
   return (
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden bg-gray-100">
       <div className="w-full p-6 m-auto bg-white rounded-lg shadow-md lg:max-w-xl">
@@ -82,15 +94,11 @@ const Auth = () => {
             </span>
           )}
           <div className="mt-6">
-            {signUp ? (
-              <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
-                Register
+            
+              <button onClick={authFunc} type="button"  className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
+                {signUp ? 'Register' : 'Login'}
               </button>
-            ) : (
-              <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
-                Login
-              </button>
-            )}
+
           </div>
         </form>
 
