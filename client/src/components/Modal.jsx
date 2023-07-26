@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { TbMailShare } from "react-icons/tb";
-import { createPostAction } from "../redux/actions/post";
+import { createPostAction, updatePostAction } from "../redux/actions/post";
+import { toast } from "react-toastify";
 
-const Modal = ({ showModal, setShowModal }) => {
+const Modal = ({
+  showModal,
+  setShowModal,
+  updatedPostId,
+  setUpdatedPostId,
+}) => {
   const dispatch = useDispatch();
-
   const [postData, setPostData] = useState({
     user: "",
     title: "",
@@ -16,10 +21,25 @@ const Modal = ({ showModal, setShowModal }) => {
     setPostData({ ...postData, [e.target.name]: e.target.value });
   };
 
-  console.log(postData)
   const postCreate = () => {
-    dispatch(createPostAction(postData));
+    if (updatedPostId) {
+      dispatch(updatePostAction(updatedPostId, postData));
+      setUpdatedPostId("");
+    } else {
+      dispatch(createPostAction(postData));
+    }
+
     setShowModal(false);
+    setPostData({
+      user: "",
+      title: "",
+      description: "",
+    });
+
+    toast("Post ekleme işlemi başarılı.", {
+      position: "top-right",
+      autoClose: 5000,
+    });
   };
 
   return (
@@ -33,7 +53,8 @@ const Modal = ({ showModal, setShowModal }) => {
                 {/*header*/}
                 <div className="flex items-start justify-between p-4 border-b border-solid border-slate-200 rounded-t">
                   <h3 className="text-2xl font-semibold opacity-80 flex items-center gap-3">
-                    <span>Share Post</span> <TbMailShare />
+                    <span>{updatedPostId ? "Update Post" : "Share Post"}</span>{" "}
+                    <TbMailShare />
                   </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-60 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -112,7 +133,7 @@ const Modal = ({ showModal, setShowModal }) => {
                     type="button"
                     onClick={postCreate}
                   >
-                    Share Post
+                    {updatedPostId ? "Update" : "Share"}
                   </button>
                 </div>
               </div>

@@ -38,7 +38,7 @@ const Auth = () => {
             className="w-60 h-36 flex justify-center items-center mx-auto mb-10"
           />
 
-          <h1 className="text-3xl font-semibold text-center text-purple-700 underline">
+          <h1 className="text-3xl font-semibold text-center text-indigo-700 underline">
             {signUp ? "Sign Up" : "Sign In"}
           </h1>
           <form className="mt-6">
@@ -55,7 +55,7 @@ const Auth = () => {
                   name="username"
                   onChange={handleChangeForm}
                   value={authData.username}
-                  className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </div>
             )}
@@ -71,7 +71,7 @@ const Auth = () => {
                 name="email"
                 onChange={handleChangeForm}
                 value={authData.email}
-                className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
             <div className="mb-2">
@@ -86,11 +86,11 @@ const Auth = () => {
                 name="password"
                 onChange={handleChangeForm}
                 value={authData.password}
-                className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
             {!signUp && (
-              <span className="text-xs text-purple-600 hover:underline">
+              <span className="text-xs text-indigo-600 hover:underline">
                 Forget Password?
               </span>
             )}
@@ -98,7 +98,7 @@ const Auth = () => {
               <button
                 onClick={authFunc}
                 type="button"
-                className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
+                className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-indigo-500 rounded-md focus:outline-none hover:bg-indigo-600 focus:bg-indigo-600"
               >
                 {signUp ? "Register" : "Login"}
               </button>
@@ -109,7 +109,7 @@ const Auth = () => {
             <p className="mt-8 text-xs font-light text-center text-gray-700">
               Don't have an account?{" "}
               <span
-                className="font-medium text-purple-600 hover:underline cursor-pointer"
+                className="font-medium text-indigo-600 hover:underline cursor-pointer"
                 onClick={() => setSignUp(true)}
               >
                 Sign up
@@ -119,7 +119,7 @@ const Auth = () => {
             <p className="mt-8 text-xs font-light text-center text-gray-700">
               Have you logged in before?{" "}
               <span
-                className="font-medium text-purple-600 hover:underline cursor-pointer"
+                className="font-medium text-indigo-600 hover:underline cursor-pointer"
                 onClick={() => setSignUp(false)}
               >
                 Sign in
